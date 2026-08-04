@@ -1,0 +1,4 @@
+ALTER TABLE emppppppp
+ADD COLUMN purchase VARCHAR(100),
+ADD COLUMN datacode VARCHAR(255),
+ADD COLUMN tax INT;
