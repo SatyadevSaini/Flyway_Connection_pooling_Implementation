@@ -27,7 +27,7 @@ public class EmployeServiceImpl implements EmployeService {
 	@Override
 	public List<Employee> getnamelike() {
 		// TODO Auto-generated method stub
-		return null;
+		return repo.findAll();
 	}
 
 	@Override

@@ -40,5 +40,11 @@ public class EmployeController {
 		Employee data= service.update(id, emp);
 		return new ResponseEntity<>(data , HttpStatus.OK);
 	}
+	
+	@GetMapping("/getlike")
+	public ResponseEntity<List<Employee>> get(){
+		List<Employee> data= service.getnamelike();
+		return new ResponseEntity<>(data , HttpStatus.OK);
+	}
 
 }
