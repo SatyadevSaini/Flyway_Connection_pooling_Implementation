@@ -32,8 +32,15 @@ public class EmployeServiceImpl implements EmployeService {
 
 	@Override
 	public Employee update(Integer id, Employee emp) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Employee existsemp = repo.findById(id).orElseThrow(() ->
+        new RuntimeException("Employee not found with id : " + id));
+		existsemp.setContactNumber(emp.getContactNumber());
+		existsemp.setName(emp.getName());
+		existsemp.setSalary(emp.getSalary());
+		
+		return repo.save(existsemp);
+		
 	}
 
 }
