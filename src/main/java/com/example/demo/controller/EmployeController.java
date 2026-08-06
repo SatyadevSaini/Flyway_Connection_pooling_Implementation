@@ -49,7 +49,7 @@ public class EmployeController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id){
+	public ResponseEntity<Void> delete(@PathVariable("id") Integer id){
 		service.delete(id);
 		return  ResponseEntity.noContent().build();
 	}
