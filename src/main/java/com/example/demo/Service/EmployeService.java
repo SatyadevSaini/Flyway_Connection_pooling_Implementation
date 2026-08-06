@@ -11,5 +11,6 @@ public interface EmployeService {
 	 List<Employee> getnamelike();
 	 Employee update(Integer id , Employee emp);
 	 void delete(Integer id);
+	 List<Employee> add100Employe(List<Employee> emp);  // API for adding 100 employee at one call !!  
 	 
 }

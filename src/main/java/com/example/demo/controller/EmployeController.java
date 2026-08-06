@@ -53,5 +53,20 @@ public class EmployeController {
 		service.delete(id);
 		return  ResponseEntity.noContent().build();
 	}
+	
+	@PostMapping("/addAll")
+	public ResponseEntity<List<Employee>> addAll(@RequestBody List<Employee> emp){
+	List<Employee> employees =	service.add100Employe(emp);
+	return new ResponseEntity<>(employees , HttpStatus.CREATED);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
