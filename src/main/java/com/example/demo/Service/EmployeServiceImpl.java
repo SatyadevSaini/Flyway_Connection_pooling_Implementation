@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,13 @@ public class EmployeServiceImpl implements EmployeService {
 		existsemp.setSalary(emp.getSalary());
 		
 		return repo.save(existsemp);
+		
+	}
+
+	@Override
+	public void delete(Integer id) {
+		Employee existscheck = repo.findById(id).orElseThrow(() -> new RuntimeException("Employe not find" +id));
+		repo.delete(existscheck);
 		
 	}
 

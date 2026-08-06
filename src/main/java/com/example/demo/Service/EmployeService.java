@@ -10,5 +10,6 @@ public interface EmployeService {
 	 List<Employee> get();
 	 List<Employee> getnamelike();
 	 Employee update(Integer id , Employee emp);
+	 void delete(Integer id);
 	 
 }
