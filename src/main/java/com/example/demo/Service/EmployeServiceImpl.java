@@ -54,4 +54,44 @@ public class EmployeServiceImpl implements EmployeService {
 		return repo.saveAll(emp);
 	}
 
+	//like Query it will execute ! 
+	@Override
+	public List<Employee> findByNameLike(String name) {
+		return repo.findByNameLike(name);
+	}
+
+	@Override
+	public List<Employee> findByNameContaining(String name) {
+		return repo.findByNameContaining(name);
+	}
+
+	@Override
+	public List<Employee> findByNameStartingwith(String name) {
+		// TODO Auto-generated method stub
+		return repo.findByNameStartingWith(name);
+	}
+
+	@Override
+	public List<Employee> findByNameEndingWith(String name) {
+		// TODO Auto-generated method stub
+		return repo.findByNameEndingWith(name);
+	}
+
+	@Override
+	public List<Employee> findBySalaryGreaterThan(Integer Salary) {
+		// TODO Auto-generated method stub
+		return repo.findBySalaryGreaterThan(Salary);
+	}
+
+	@Override
+	public List<Employee> findBySalaryBetween(Integer min, Integer max) {
+		// TODO Auto-generated method stub
+		return repo.findBySalaryBetween(min, max);
+	}
+	
+	
+	
+	
+	
+
 }

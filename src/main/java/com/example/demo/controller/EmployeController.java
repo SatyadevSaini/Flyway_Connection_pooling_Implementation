@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Entity.Employee;
+import com.example.demo.Repo.EmployeRepo;
 import com.example.demo.Service.EmployeServiceImpl;
 
 @RestController
@@ -23,6 +25,9 @@ public class EmployeController {
 	
 	@Autowired
 	EmployeServiceImpl service;
+	
+	@Autowired
+	EmployeRepo repo;
 	
 	@PostMapping("/add")
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee){
@@ -60,13 +65,47 @@ public class EmployeController {
 	return new ResponseEntity<>(employees , HttpStatus.CREATED);
 	}
 	
+	@GetMapping("/getNameLike/{name}")
+	public ResponseEntity<List<Employee>> getNameLike(@PathVariable String name){
+		List<Employee> employees = service.findByNameLike("%"+name+"%");
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
 	
 	
+	@GetMapping("/nameContaining/{name}")
+	public ResponseEntity<List<Employee>> containing(@PathVariable String name){
+		List<Employee> employees = service.findByNameContaining(name);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
 	
 	
+	@GetMapping("/findByNameStartingwith/{name}")
+	public ResponseEntity<List<Employee>> findByNameStartingwith(@PathVariable String name){
+		List<Employee> employees = service.findByNameStartingwith(name);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
+	
+	@GetMapping("/findByNameEndingWith/{name}")
+	public ResponseEntity<List<Employee>> findByNameEndingWith(@PathVariable String name){
+		List<Employee> employees = service.findByNameEndingWith(name);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
+	
+	@GetMapping("/findBySalaryGreaterThan/{salary}")
+	public ResponseEntity<List<Employee>> findBySalaryGreaterThan(@PathVariable Integer salary){
+		List<Employee> employees = service.findBySalaryGreaterThan(salary);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
+	 
+	
+	@GetMapping("/findBySalaryBetween")
+	public ResponseEntity<List<Employee>> findBySalaryBetween(@RequestParam Integer min , @RequestParam Integer max){
+		List<Employee> employees = service.findBySalaryBetween(min, max);
+		return new ResponseEntity<>(employees, HttpStatus.OK);
+	}
 	
 	
-	
+
 	
 
 }
